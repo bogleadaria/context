@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ISWinT Context - Ecran Public</title>
+    <link rel="stylesheet" href="./css/public.css" />
+  </head>
+  <body>
+    <div class="header" id="main-header">
+      <div id="team1-display">
+        <span id="team1-name">Echipa 1</span>: <span id="score1">0</span>
+      </div>
+      <div class="round-bank">Bancă: <span id="bank-score">0</span></div>
+      <div id="team2-display">
+        <span id="team2-name">Echipa 2</span>: <span id="score2">0</span>
+      </div>
+    </div>
+
+    <div id="big-alert" class="overlay-box">
+      <h1 id="alert-title">RUNDA X</h1>
+      <h2 id="alert-subtitle" style="display: none">Subtitlu</h2>
+      <p id="alert-text"></p>
+    </div>
+
+    <div id="question-display" class="question-box"></div>
+    <div class="strikes" id="strike-container"></div>
+    <div class="board" id="game-board"></div>
+
+    <script src="./js/public.js"></script>
+  </body>
+</html>

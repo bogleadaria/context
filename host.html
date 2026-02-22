@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Host - Context ISWinT edition</title>
+    <link rel="stylesheet" href="./css/host.css" />
+  </head>
+  <body>
+    <button class="reset-total-btn" onclick="resetJocTotal()">
+      ⚠ Resetează Softul de la 0
+    </button>
+    <h1>Panou Host</h1>
+
+    <div class="panel">
+      <h3>Echipele Meciului Curent</h3>
+      <input
+        type="text"
+        id="t1-name"
+        placeholder="Nume Echipa 1"
+        value="Echipa 1"
+      />
+      <input
+        type="text"
+        id="t2-name"
+        placeholder="Nume Echipa 2"
+        value="Echipa 2"
+      />
+      <button onclick="updateTeams()" style="background-color: #7d3795">
+        Update Nume
+      </button>
+    </div>
+
+    <div class="panel">
+      <h3>Efecte Sonore</h3>
+      <button
+        onclick="playManualSound('intro')"
+        style="background-color: #7d3795"
+      >
+        Intro
+      </button>
+      <button
+        onclick="playManualSound('clap')"
+        style="background-color: #29712a"
+      >
+        Aplauze
+      </button>
+      <button
+        onclick="playManualSound('boo')"
+        style="background-color: #d9534f"
+      >
+        Huiduieli
+      </button>
+    </div>
+
+    <div class="panel" style="background-color: #e6e6fa">
+      <h3 style="display: flex; justify-content: space-between">
+        <span id="round-indicator">Runda 1</span>
+        <span id="q-counter">1 / X</span>
+      </h3>
+      <div
+        id="host-q-text"
+        style="
+          font-size: 20px;
+          font-weight: bold;
+          color: #333;
+          margin-bottom: 15px;
+        "
+      ></div>
+      <button class="load-btn" onclick="incarcaIntrebareCurenta()">
+        1. Pregătește Runda pe Ecran
+      </button>
+      <button
+        onclick="sendQuestion()"
+        style="background-color: #7d3795; width: 100%; margin-top: 10px"
+      >
+        2. Afișează Întrebarea pentru Public
+      </button>
+    </div>
+
+    <div class="panel">
+      <h3>Control Rundă</h3>
+      <div>
+        A cui este rândul?
+        <input
+          type="radio"
+          name="turn"
+          value="1"
+          id="turn1"
+          onchange="changeTurn(1)"
+        />
+        <label for="turn1" id="lbl-turn1">Echipa 1</label>
+        <input
+          type="radio"
+          name="turn"
+          value="2"
+          id="turn2"
+          onchange="changeTurn(2)"
+        />
+        <label for="turn2" id="lbl-turn2">Echipa 2</label>
+      </div>
+      <h2 style="margin-top: 15px">
+        Bancă Rundă: <span id="host-bank">0</span> puncte
+      </h2>
+      <div id="status-message" class="status-box" style="display: none"></div>
+      <button class="strike-btn" onclick="giveStrike()">
+        Răspuns Greșit
+      </button>
+    </div>
+
+    <div class="panel">
+      <h3>Răspunsuri corecte</h3>
+      <div id="answers-panel">
+        <i>Apasă "Pregătește Runda pe Ecran" pentru a începe...</i>
+      </div>
+    </div>
+
+    <div
+      class="panel"
+      style="
+        background-color: #333;
+        text-align: center;
+      "
+    >
+      <button id="btn-next" class="next-q-btn" onclick="urmatoareaFaza()">
+        3. Următoarea Întrebare
+      </button>
+    </div>
+    <script src="questions.js"></script>
+    <script src="./js/host.js"></script>
+  </body>
+</html>

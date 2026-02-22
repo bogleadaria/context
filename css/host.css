@@ -1,0 +1,89 @@
+:root {
+  --mov-iswint: #7d3795;
+  --galben-iswint: #ffdf00;
+  --verde-iswint: #29712a;
+  --fundal-host: #f4f4f4;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: var(--fundal-host);
+  padding: 20px;
+}
+
+.panel {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+h2, h3 {
+  color: var(--mov-iswint);
+  margin-top: 0;
+}
+
+button {
+  padding: 10px 15px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: var(--verde-iswint);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+input[type="text"] {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.strike-btn {
+  background-color: #d9534f;
+  font-size: 18px;
+  width: 100%;
+  padding: 15px;
+  margin-top: 10px;
+}
+
+.status-box {
+  background: #ffebee;
+  padding: 15px;
+  border-left: 5px solid #d9534f;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.load-btn {
+  background-color: var(--galben-iswint);
+  color: var(--mov-iswint);
+  width: 100%;
+  font-size: 18px;
+  padding: 15px;
+}
+
+.next-q-btn {
+  background-color: #333;
+  color: white;
+  width: 100%;
+  font-size: 18px;
+  padding: 20px;
+  transition: 0.3s;
+}
+
+.reset-total-btn {
+  background-color: red;
+  color: white;
+  float: right;
+}
