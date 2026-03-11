@@ -91,13 +91,11 @@ function salveazaStare() {
   localStorage.setItem("iswintFeudState", JSON.stringify(stare));
 }
 
-// Salvăm rundele generate în localStorage ca să rămână stabile între refresh-uri
 function salveazaRunde() {
   localStorage.setItem("iswintFeudRunde", JSON.stringify(bazaDeDateJoc));
 }
 
 function incarcaStareDinMemorie() {
-  // Încarc rundele salvate (dacă există) ca să nu se re-shuffleze la refresh
   const rundeSalvate = localStorage.getItem("iswintFeudRunde");
   if (rundeSalvate) {
     bazaDeDateJoc = JSON.parse(rundeSalvate);
@@ -264,7 +262,7 @@ function revealAnswer(id, text, puncte, btnElement) {
   canalJoc.postMessage({ actiune: "update_bank", bank: stare.bank });
 
   if (stare.steal) {
-    // Echipa care fură a răspuns corect — primește toate punctele din bancă
+    // Echipa care fură a răspuns corect
     let stealingName = stare.turn === 1 ? stare.t1 : stare.t2;
     awardBankTo(stare.turn);
     stare.steal = false;
@@ -300,7 +298,7 @@ function giveStrike() {
       );
     }
   } else {
-    // Echipa care fură a răspuns greșit — punctele merg la echipa inițială
+    // Echipa care fură a răspuns greșit
     canalJoc.postMessage({ actiune: "strike" });
     let originalName = stare.initial === 1 ? stare.t1 : stare.t2;
     awardBankTo(stare.initial);
