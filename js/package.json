@@ -1,0 +1,12 @@
+{
+  "name": "iswint-context",
+  "version": "1.0.0",
+  "description": "ISWinT Context - Ce Spun Românii edition",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ws": "^8.16.0"
+  }
+}

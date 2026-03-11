@@ -1,192 +1,338 @@
-const bazaDeDateJoc = [
+const toateIntrebarile = [
   {
-    nume: "RUNDA 1 (Primul Meci)",
-    intrebari: [
-      {
-        intrebare: "Ce pui pe masa de Crăciun?",
-        raspunsuri: [
-          { text: "Sarmale", puncte: 45 },
-          { text: "Cozonac", puncte: 25 },
-          { text: "Salată de boeuf", puncte: 15 },
-          { text: "Cârnați", puncte: 10 },
-        ],
-      },
-      {
-        intrebare:
-          "Un obiect pe care îl iei mereu cu tine când pleci de acasă.",
-        raspunsuri: [
-          { text: "Telefon", puncte: 50 },
-          { text: "Chei", puncte: 30 },
-          { text: "Portofel", puncte: 15 },
-        ],
-      },
-      {
-        intrebare: "Ce pui pe masa de Crăciun?",
-        raspunsuri: [
-          { text: "Sarmale", puncte: 45 },
-          { text: "Cozonac", puncte: 25 },
-          { text: "Salată de boeuf", puncte: 15 },
-          { text: "Cârnați", puncte: 10 },
-        ],
-      },
-      {
-        intrebare:
-          "Un obiect pe care îl iei mereu cu tine când pleci de acasă.",
-        raspunsuri: [
-          { text: "Telefon", puncte: 50 },
-          { text: "Chei", puncte: 30 },
-          { text: "Portofel", puncte: 15 },
-        ],
-      },
-      {
-        intrebare: "Ce pui pe masa de Crăciun?",
-        raspunsuri: [
-          { text: "Sarmale", puncte: 45 },
-          { text: "Cozonac", puncte: 25 },
-          { text: "Salată de boeuf", puncte: 15 },
-          { text: "Cârnați", puncte: 10 },
-        ],
-      },
-      {
-        intrebare:
-          "Un obiect pe care îl iei mereu cu tine când pleci de acasă.",
-        raspunsuri: [
-          { text: "Telefon", puncte: 50 },
-          { text: "Chei", puncte: 30 },
-          { text: "Portofel", puncte: 15 },
-        ],
-      },
-      {
-        intrebare: "Ce pui pe masa de Crăciun?",
-        raspunsuri: [
-          { text: "Sarmale", puncte: 45 },
-          { text: "Cozonac", puncte: 25 },
-          { text: "Salată de boeuf", puncte: 15 },
-          { text: "Cârnați", puncte: 10 },
-        ],
-      },
-      {
-        intrebare:
-          "Un obiect pe care îl iei mereu cu tine când pleci de acasă.",
-        raspunsuri: [
-          { text: "Telefon", puncte: 50 },
-          { text: "Chei", puncte: 30 },
-          { text: "Portofel", puncte: 15 },
-        ],
-      },
-      {
-        intrebare: "Ce pui pe masa de Crăciun?",
-        raspunsuri: [
-          { text: "Sarmale", puncte: 45 },
-          { text: "Cozonac", puncte: 25 },
-          { text: "Salată de boeuf", puncte: 15 },
-          { text: "Cârnați", puncte: 10 },
-        ],
-      },
-      {
-        intrebare:
-          "Un obiect pe care îl iei mereu cu tine când pleci de acasă.",
-        raspunsuri: [
-          { text: "Telefon", puncte: 50 },
-          { text: "Chei", puncte: 30 },
-          { text: "Portofel", puncte: 15 },
-        ],
-      },
+    intrebare: "Cine e cel mai probabil să se combine în ISWinT?",
+    raspunsuri: [
+      { text: "Denis", puncte: 11 },
+      { text: "Beto", puncte: 7 },
+      { text: "Miri", puncte: 6 },
+      { text: "Enola", puncte: 5 },
+      { text: "Bacter", puncte: 4 },
+      { text: "Orășan", puncte: 3 },
+      { text: "Norbi", puncte: 2 },
     ],
   },
   {
-    nume: "RUNDA 2 (Al Doilea Meci)",
-    intrebari: [
-      {
-        intrebare: "Ce pui pe masa de Crăciun?",
-        raspunsuri: [
-          { text: "Sarmale", puncte: 45 },
-          { text: "Cozonac", puncte: 25 },
-          { text: "Salată de boeuf", puncte: 15 },
-          { text: "Cârnați", puncte: 10 },
-        ],
-      },
-      {
-        intrebare:
-          "Un obiect pe care îl iei mereu cu tine când pleci de acasă.",
-        raspunsuri: [
-          { text: "Telefon", puncte: 50 },
-          { text: "Chei", puncte: 30 },
-          { text: "Portofel", puncte: 15 },
-        ],
-      },
-      {
-        intrebare: "Ce pui pe masa de Crăciun?",
-        raspunsuri: [
-          { text: "Sarmale", puncte: 45 },
-          { text: "Cozonac", puncte: 25 },
-          { text: "Salată de boeuf", puncte: 15 },
-          { text: "Cârnați", puncte: 10 },
-        ],
-      },
-      {
-        intrebare:
-          "Un obiect pe care îl iei mereu cu tine când pleci de acasă.",
-        raspunsuri: [
-          { text: "Telefon", puncte: 50 },
-          { text: "Chei", puncte: 30 },
-          { text: "Portofel", puncte: 15 },
-        ],
-      },
-      {
-        intrebare: "Ce pui pe masa de Crăciun?",
-        raspunsuri: [
-          { text: "Sarmale", puncte: 45 },
-          { text: "Cozonac", puncte: 25 },
-          { text: "Salată de boeuf", puncte: 15 },
-          { text: "Cârnați", puncte: 10 },
-        ],
-      },
-      {
-        intrebare:
-          "Un obiect pe care îl iei mereu cu tine când pleci de acasă.",
-        raspunsuri: [
-          { text: "Telefon", puncte: 50 },
-          { text: "Chei", puncte: 30 },
-          { text: "Portofel", puncte: 15 },
-        ],
-      },
-      {
-        intrebare: "Ce pui pe masa de Crăciun?",
-        raspunsuri: [
-          { text: "Sarmale", puncte: 45 },
-          { text: "Cozonac", puncte: 25 },
-          { text: "Salată de boeuf", puncte: 15 },
-          { text: "Cârnați", puncte: 10 },
-        ],
-      },
-      {
-        intrebare:
-          "Un obiect pe care îl iei mereu cu tine când pleci de acasă.",
-        raspunsuri: [
-          { text: "Telefon", puncte: 50 },
-          { text: "Chei", puncte: 30 },
-          { text: "Portofel", puncte: 15 },
-        ],
-      },
-      {
-        intrebare: "Ce pui pe masa de Crăciun?",
-        raspunsuri: [
-          { text: "Sarmale", puncte: 45 },
-          { text: "Cozonac", puncte: 25 },
-          { text: "Salată de boeuf", puncte: 15 },
-          { text: "Cârnați", puncte: 10 },
-        ],
-      },
-      {
-        intrebare:
-          "Un obiect pe care îl iei mereu cu tine când pleci de acasă.",
-        raspunsuri: [
-          { text: "Telefon", puncte: 50 },
-          { text: "Chei", puncte: 30 },
-          { text: "Portofel", puncte: 15 },
-        ],
-      },
+    intrebare: "Cine e cel mai probabil să își dea demisia din BC ISWinT?",
+    raspunsuri: [
+      { text: "Daria", puncte: 10 },
+      { text: "Enola", puncte: 8 },
+      { text: "Beto", puncte: 6 },
+      { text: "Karla", puncte: 5 },
+      { text: "Orășan", puncte: 4 },
+      { text: "Mădă", puncte: 3 },
+      { text: "Dede", puncte: 2 },
+    ],
+  },
+  {
+    intrebare: "Care e primul lucru care îți vine în minte când auzi ISWinT?",
+    raspunsuri: [
+      { text: "Alcool", puncte: 10 },
+      { text: "Distracție", puncte: 8 },
+      { text: "Poartă", puncte: 6 },
+      { text: "Cămin", puncte: 5 },
+      { text: "Olimpada", puncte: 4 },
+      { text: "Straini", puncte: 3 },
+      { text: "Parada", puncte: 2 },
+    ],
+  },
+  {
+    intrebare: "Care a fost cea mai șmecheră temă de ISWinT din ultimii 10 ani?",
+    raspunsuri: [
+      { text: "Shine Your Own Light", puncte: 10 },
+      { text: "Change", puncte: 9 },
+      { text: "Reunite. Rebuild. Restart", puncte: 7 },
+      { text: "Reflect the past. Refract the future!", puncte: 6 },
+      { text: "Connecting The Dots", puncte: 4 },
+      { text: "ReThink!", puncte: 3 },
+    ],
+  },
+  {
+    intrebare: "Ce obiect e must have în bagajul pentru ISWinT?",
+    raspunsuri: [
+      { text: "Alcool", puncte: 10 },
+      { text: "Deodorant", puncte: 8 },
+      { text: "Țigări", puncte: 6 },
+      { text: "Ciocan", puncte: 5 },
+      { text: "Chiloți", puncte: 4 },
+      { text: "Șlapi", puncte: 3 },
+      { text: "Prezervative", puncte: 2 },
+    ],
+  },
+  {
+    intrebare: "În câte zile e gata Youth Portal?",
+    raspunsuri: [
+      { text: "10", puncte: 9 },
+      { text: "1", puncte: 8 },
+      { text: "2", puncte: 6 },
+      { text: "7", puncte: 5 },
+      { text: "6", puncte: 4 },
+      { text: "3", puncte: 3 },
+      { text: "9", puncte: 2 },
+      { text: "8", puncte: 1 },
+    ],
+  },
+  {
+    intrebare: "Cine ia coordonator la anu?",
+    raspunsuri: [
+      { text: "Diana", puncte: 10 },
+      { text: "Ralu", puncte: 7 },
+      { text: "Beto", puncte: 6 },
+      { text: "Ionescu", puncte: 5 },
+      { text: "Vom afla", puncte: 4 },
+      { text: "Orășan", puncte: 3 },
+      { text: "Daria", puncte: 2 },
+      { text: "Tomici", puncte: 1 },
+    ],
+  },
+  {
+    intrebare: "Câte testări de boxe se fac înainte de paradă anul ăsta?",
+    raspunsuri: [
+      { text: "67", puncte: 11 },
+      { text: "87", puncte: 7 },
+      { text: "3", puncte: 6 },
+      { text: "21", puncte: 5 },
+      { text: "14", puncte: 4 },
+      { text: "43", puncte: 3 },
+      { text: "58", puncte: 2 },
+    ],
+  },
+  {
+    intrebare: "Cine va fi salahorlu de ghirlandă anul ăsta?",
+    raspunsuri: [
+      { text: "Bilț", puncte: 10 },
+      { text: "Orășan", puncte: 7 },
+      { text: "Daria", puncte: 6 },
+      { text: "Andy", puncte: 5 },
+      { text: "Noris", puncte: 4 },
+      { text: "Cheșa", puncte: 3 },
+      { text: "Dragoș Marogel", puncte: 2 },
+    ],
+  },
+  {
+    intrebare: "Cine își ia cel mai rău la ghilotinare din BC ISWinT?",
+    raspunsuri: [
+      { text: "Beto", puncte: 17 },
+      { text: "Orășan", puncte: 7 },
+      { text: "Bodo", puncte: 5 },
+      { text: "Daria", puncte: 4 },
+      { text: "Karla", puncte: 3 },
+      { text: "Enola", puncte: 2 },
+    ],
+  },
+  {
+    intrebare: "Cine va fi BGS anul ăsta?",
+    raspunsuri: [
+      { text: "Fona", puncte: 13 },
+      { text: "Burdu", puncte: 11 },
+      { text: "Orășan", puncte: 6 },
+      { text: "Rareș Pădure", puncte: 5 },
+      { text: "Beto", puncte: 3 },
+    ],
+  },
+  {
+    intrebare: "Câte persoane convinge Dede în TB să vină ca wanted în ISWinT?",
+    raspunsuri: [
+      { text: "3", puncte: 9 },
+      { text: "24", puncte: 8 },
+      { text: "9", puncte: 7 },
+      { text: "10", puncte: 5 },
+      { text: "4", puncte: 4 },
+      { text: "15", puncte: 3 },
+      { text: "18", puncte: 2 },
+    ],
+  },
+  {
+    intrebare: "Cum se spune la colac în engleză?",
+    raspunsuri: [
+      { text: "Colac", puncte: 12 },
+      { text: "Colack", puncte: 8 },
+      { text: "Swimming ring", puncte: 6 },
+      { text: "Twisty bread", puncte: 5 },
+      { text: "Floaty", puncte: 4 },
+      { text: "Lifebuoy", puncte: 3 },
+    ],
+  },
+  {
+    intrebare: "De câte ori se va încuia ușa la 502?",
+    raspunsuri: [
+      { text: "Fără număr", puncte: 17 },
+      { text: "0", puncte: 7 },
+      { text: "11", puncte: 5 },
+      { text: "7", puncte: 4 },
+      { text: "50", puncte: 3 },
+      { text: "99", puncte: 2 },
+    ],
+  },
+  {
+    intrebare: "Cine o să fie dezgropatul de la Check In?",
+    raspunsuri: [
+      { text: "Raluca", puncte: 18 },
+      { text: "Norbi", puncte: 6 },
+      { text: "Beto", puncte: 5 },
+      { text: "Karla", puncte: 4 },
+      { text: "Enola", puncte: 3 },
+      { text: "Marina", puncte: 2 },
+    ],
+  },
+  {
+    intrebare: "Cine a fost forțat să candideze?",
+    raspunsuri: [
+      { text: "Enola", puncte: 14 },
+      { text: "Beto", puncte: 7 },
+      { text: "Daria", puncte: 6 },
+      { text: "Orășan", puncte: 5 },
+      { text: "Bodo", puncte: 4 },
+      { text: "Ralu", puncte: 2 },
+    ],
+  },
+  {
+    intrebare: "Care e melodia ISWinT?",
+    raspunsuri: [
+      { text: "Coming Home", puncte: 11 },
+      { text: "Doamna si bagabontul", puncte: 7 },
+      { text: "Nu stiu", puncte: 6 },
+      { text: "Waving Flag", puncte: 5 },
+      { text: "Biceps triceps", puncte: 4 },
+      { text: "E mult, e greu", puncte: 3 },
+      { text: "Geronimo", puncte: 2 },
+    ],
+  },
+  {
+    intrebare: "Cine întârzie mereu la ședințe?",
+    raspunsuri: [
+      { text: "Beto", puncte: 10 },
+      { text: "Toată lumea", puncte: 8 },
+      { text: "Băieții", puncte: 6 },
+      { text: "Nimeni", puncte: 5 },
+      { text: "Enola", puncte: 4 },
+      { text: "Karla", puncte: 3 },
+      { text: "Tomici", puncte: 2 },
+    ],
+  },
+  {
+    intrebare: "Câți oameni rămân în Post-ISWinT?",
+    raspunsuri: [
+      { text: "4", puncte: 17 },
+      { text: "8", puncte: 7 },
+      { text: "12", puncte: 5 },
+      { text: "60", puncte: 4 },
+      { text: "30", puncte: 3 },
+      { text: "28", puncte: 2 },
+    ],
+  },
+  {
+    intrebare: "Cine folosește baia din depozit?",
+    raspunsuri: [
+      { text: "Beto", puncte: 11 },
+      { text: "Toți", puncte: 9 },
+      { text: "Partcipanții", puncte: 6 },
+      { text: "Orășan", puncte: 5 },
+      { text: "Nimeni", puncte: 4 },
+      { text: "Tehnicu", puncte: 3 },
+    ],
+  },
+  {
+    intrebare: "Câți algerieni vor fi acceptați anul ăsta?",
+    raspunsuri: [
+      { text: "99", puncte: 13 },
+      { text: "0", puncte: 11 },
+      { text: "2", puncte: 5 },
+      { text: "7", puncte: 4 },
+      { text: "24", puncte: 3 },
+      { text: "17", puncte: 2 },
+    ],
+  },
+  {
+    intrebare: "Ce fosilă apare în ISWinT?",
+    raspunsuri: [
+      { text: "Munteanu", puncte: 9 },
+      { text: "Burdu", puncte: 8 },
+      { text: "Mădă Rusan", puncte: 7 },
+      { text: "Vrăjescu", puncte: 5 },
+      { text: "T rex", puncte: 4 },
+      { text: "Vilcea", puncte: 3 },
+      { text: "Cândea", puncte: 2 },
+    ],
+  },
+  {
+    intrebare: "Câte cozi de mătură se rup anul ăsta?",
+    raspunsuri: [
+      { text: "4", puncte: 11 },
+      { text: "0", puncte: 8 },
+      { text: "8", puncte: 7 },
+      { text: "50", puncte: 5 },
+      { text: "33", puncte: 4 },
+      { text: "13", puncte: 3 },
+    ],
+  },
+  {
+    intrebare: "Cine e cel mai faimos barman din echipa de organizare?",
+    raspunsuri: [
+      { text: "Rareș Pădure", puncte: 12 },
+      { text: "Fona", puncte: 9 },
+      { text: "Manațe", puncte: 6 },
+      { text: "SPF", puncte: 5 },
+      { text: "Denis", puncte: 4 },
+      { text: "Adelina", puncte: 2 },
+    ],
+  },
+  {
+    intrebare: "Cine va fi trimis acasă anul ăsta?",
+    raspunsuri: [
+      { text: "Norbi", puncte: 11 },
+      { text: "Participant", puncte: 7 },
+      { text: "Nicu Bălătici", puncte: 6 },
+      { text: "Nimeni", puncte: 5 },
+      { text: "Beto", puncte: 4 },
+      { text: "Noris", puncte: 3 },
+      { text: "Dan Balan", puncte: 2 },
+    ],
+  },
+  {
+    intrebare: "Câți oameni intră într-un duș?",
+    raspunsuri: [
+      { text: "30", puncte: 11 },
+      { text: "14", puncte: 7 },
+      { text: "18", puncte: 6 },
+      { text: "10", puncte: 5 },
+      { text: "2", puncte: 4 },
+      { text: "24", puncte: 3 },
+      { text: "5", puncte: 2 },
+    ],
+  },
+  {
+    intrebare: "Pe cine avem portar anul ăsta?",
+    raspunsuri: [
+      { text: "Alin", puncte: 13 },
+      { text: "Marius", puncte: 7 },
+      { text: "Nu știu", puncte: 6 },
+      { text: "Nico", puncte: 5 },
+      { text: "Fona", puncte: 4 },
+      { text: "Rareș Pădure", puncte: 3 },
+    ],
+  },
+  {
+    intrebare: "Cine va fi hoitul anul ăsta?",
+    raspunsuri: [
+      { text: "Beto", puncte: 9 },
+      { text: "Cristi Multimedia", puncte: 8 },
+      { text: "Norbi", puncte: 7 },
+      { text: "Bodo", puncte: 5 },
+      { text: "Bacter", puncte: 4 },
+      { text: "Denis", puncte: 3 },
+      { text: "Marina", puncte: 2 },
+    ],
+  },
+  {
+    intrebare: "Ce găsim când curățăm camerele?",
+    raspunsuri: [
+      { text: "Chiloți", puncte: 10 },
+      { text: "Șobolani", puncte: 8 },
+      { text: "Mizerie", puncte: 6 },
+      { text: "De toate", puncte: 5 },
+      { text: "Căcat", puncte: 4 },
+      { text: "Bagaje", puncte: 3 },
+      { text: "(Doze de) Bere", puncte: 2 },
     ],
   },
 ];

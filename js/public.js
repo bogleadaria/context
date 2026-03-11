@@ -1,4 +1,21 @@
-const canalJoc = new BroadcastChannel("iswint_feud");
+const ws = new WebSocket(`wss://${location.host}`);
+
+const canalJoc = {
+  postMessage: (data) => {
+    if (ws.readyState === WebSocket.OPEN) {
+      ws.send(JSON.stringify(data));
+    } else {
+      ws.addEventListener("open", () => ws.send(JSON.stringify(data)), { once: true });
+    }
+  },
+  onmessage: null,
+};
+
+ws.addEventListener("message", (event) => {
+  if (canalJoc.onmessage) {
+    canalJoc.onmessage({ data: JSON.parse(event.data) });
+  }
+});
 
 function ascundeTot() {
   document.getElementById("game-board").innerHTML = "";

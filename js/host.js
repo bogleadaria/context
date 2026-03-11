@@ -1,8 +1,46 @@
-const canalJoc = new BroadcastChannel("iswint_feud");
+const ws = new WebSocket(`wss://${location.host}`);
 
-/* ==========================================
-                    SUNETE
-   ========================================== */
+const canalJoc = {
+  postMessage: (data) => {
+    if (ws.readyState === WebSocket.OPEN) {
+      ws.send(JSON.stringify(data));
+    } else {
+      ws.addEventListener("open", () => ws.send(JSON.stringify(data)), { once: true });
+    }
+  },
+  onmessage: null,
+};
+
+ws.addEventListener("message", (event) => {
+  if (canalJoc.onmessage) {
+    canalJoc.onmessage({ data: JSON.parse(event.data) });
+  }
+});
+
+const INTREBARI_RUNDA_1 = 15;
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function genereazaRunde() {
+  const amestecate = shuffle(toateIntrebarile);
+  const runda1 = amestecate.slice(0, INTREBARI_RUNDA_1);
+  const runda2 = amestecate.slice(INTREBARI_RUNDA_1);
+  return [
+    { nume: "RUNDA 1 (Primul Meci)", intrebari: runda1 },
+    { nume: "RUNDA 2 (Al Doilea Meci)", intrebari: runda2 },
+  ];
+}
+
+let bazaDeDateJoc = genereazaRunde();
+
+//sunete
 const sunetCorect = new Audio("./sunete/corect.mp3");
 const sunetBuzzer = new Audio("./sunete/buzzer.mp3");
 const sunetWin = new Audio("./sunete/win.mp3");
@@ -53,19 +91,28 @@ function salveazaStare() {
   localStorage.setItem("iswintFeudState", JSON.stringify(stare));
 }
 
+// Salvăm rundele generate în localStorage ca să rămână stabile între refresh-uri
+function salveazaRunde() {
+  localStorage.setItem("iswintFeudRunde", JSON.stringify(bazaDeDateJoc));
+}
+
 function incarcaStareDinMemorie() {
+  // Încarc rundele salvate (dacă există) ca să nu se re-shuffleze la refresh
+  const rundeSalvate = localStorage.getItem("iswintFeudRunde");
+  if (rundeSalvate) {
+    bazaDeDateJoc = JSON.parse(rundeSalvate);
+  } else {
+    salveazaRunde();
+  }
+
   let salvat = localStorage.getItem("iswintFeudState");
   if (salvat) {
     stare = JSON.parse(salvat);
 
     document.getElementById("t1-name").value = stare.t1;
     document.getElementById("t2-name").value = stare.t2;
-    document.getElementById("host-t1-name").innerText = stare.t1;
-    document.getElementById("host-t2-name").innerText = stare.t2;
     document.getElementById("lbl-turn1").innerText = stare.t1;
     document.getElementById("lbl-turn2").innerText = stare.t2;
-    document.getElementById("host-s1").innerText = stare.s1;
-    document.getElementById("host-s2").innerText = stare.s2;
     document.getElementById("host-bank").innerText = stare.bank;
     document.getElementById("turn" + stare.turn).checked = true;
 
@@ -145,8 +192,6 @@ function sincronizeazaPublic() {
 function updateTeams() {
   stare.t1 = document.getElementById("t1-name").value || "Echipa 1";
   stare.t2 = document.getElementById("t2-name").value || "Echipa 2";
-  document.getElementById("host-t1-name").innerText = stare.t1;
-  document.getElementById("host-t2-name").innerText = stare.t2;
   document.getElementById("lbl-turn1").innerText = stare.t1;
   document.getElementById("lbl-turn2").innerText = stare.t2;
   salveazaStare();
@@ -202,7 +247,6 @@ function revealAnswer(id, text, puncte, btnElement) {
   btnElement.disabled = true;
   btnElement.style.opacity = 0.5;
 
-  // PLAY SUNET AUTOMAT CORECT
   sunetCorect.currentTime = 0;
   sunetCorect.play();
 
@@ -220,9 +264,13 @@ function revealAnswer(id, text, puncte, btnElement) {
   canalJoc.postMessage({ actiune: "update_bank", bank: stare.bank });
 
   if (stare.steal) {
+    // Echipa care fură a răspuns corect — primește toate punctele din bancă
     let stealingName = stare.turn === 1 ? stare.t1 : stare.t2;
     awardBankTo(stare.turn);
-    showStatus(`Furt Reușit! ${stealingName} a câștigat punctele.`);
+    stare.steal = false;
+    stare.strikes = 0;
+    salveazaStare();
+    showStatus(`✅ Furt Reușit! ${stealingName} a câștigat toate punctele din bancă.`);
   } else {
     if (stare.revealed.length === intrebareCurenta.raspunsuri.length) {
       let activeName = stare.turn === 1 ? stare.t1 : stare.t2;
@@ -233,7 +281,6 @@ function revealAnswer(id, text, puncte, btnElement) {
 }
 
 function giveStrike() {
-  // PLAY SUNET AUTOMAT X (BUZZER)
   sunetBuzzer.currentTime = 0;
   sunetBuzzer.play();
 
@@ -253,11 +300,16 @@ function giveStrike() {
       );
     }
   } else {
+    // Echipa care fură a răspuns greșit — punctele merg la echipa inițială
     canalJoc.postMessage({ actiune: "strike" });
-    awardBankTo(stare.initial);
     let originalName = stare.initial === 1 ? stare.t1 : stare.t2;
+    awardBankTo(stare.initial);
+    stare.steal = false;
+    stare.strikes = 0;
+    changeTurn(stare.initial);
+    salveazaStare();
     showStatus(
-      `Furt Eșuat! ${originalName} (echipa inițială) primește punctele.`,
+      `❌ Furt Eșuat! ${originalName} (echipa inițială) primește punctele.`,
     );
   }
 }
@@ -267,8 +319,6 @@ function awardBankTo(team) {
   else stare.s2 += stare.bank;
   stare.bank = 0;
   document.getElementById("host-bank").innerText = stare.bank;
-  document.getElementById("host-s1").innerText = stare.s1;
-  document.getElementById("host-s2").innerText = stare.s2;
   salveazaStare();
   canalJoc.postMessage({ actiune: "update_bank", bank: stare.bank });
   canalJoc.postMessage({
@@ -329,7 +379,6 @@ function urmatoareaFaza() {
     stare.qIdx = 0;
     stare.roundFinished = false;
 
-    // RESET SCORURI ȘI NUME PENTRU MECI NOU
     stare.s1 = 0;
     stare.s2 = 0;
     stare.t1 = "Echipa 1";
@@ -346,7 +395,6 @@ function urmatoareaFaza() {
     actualizeazaInterfataIntrebare();
     salveazaStare();
 
-    // Sincronizare instantă cu publicul (ecran gol + scoruri 0)
     canalJoc.postMessage({
       actiune: "update_teams",
       t1Name: stare.t1,
@@ -359,7 +407,6 @@ function urmatoareaFaza() {
     return;
   }
 
-  // Logica normală de trecere la următoarea întrebare
   stare.strikes = 0;
   stare.steal = false;
   stare.revealed = [];
@@ -387,7 +434,6 @@ function urmatoareaFaza() {
 }
 
 function afiseazaCastigatorPePublic() {
-  // PLAY SUNET AUTOMAT WIN
   sunetWin.currentTime = 0;
   sunetWin.play();
 
@@ -426,10 +472,11 @@ function afiseazaCastigatorPePublic() {
 function resetJocTotal() {
   if (
     confirm(
-      "⚠ Ești sigur? Se vor șterge TOATE scorurile și o luăm de la zero cu primul meci!",
+      "⚠ Ești sigur? Se vor șterge TOATE scorurile și o luăm de la zero! Întrebările vor fi amestecate din nou.",
     )
   ) {
     localStorage.removeItem("iswintFeudState");
+    localStorage.removeItem("iswintFeudRunde");
     canalJoc.postMessage({ actiune: "clear_screen" });
     location.reload();
   }

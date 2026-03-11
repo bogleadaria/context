@@ -87,3 +87,11 @@ input[type="text"] {
   color: white;
   float: right;
 }
+
+.open-public-btn {
+  background-color: var(--fundal-host);
+  color: var(--mov-iswint);
+  border: 3px solid var(--mov-iswint);
+  float: right;
+  margin-right: 10px;
+}
