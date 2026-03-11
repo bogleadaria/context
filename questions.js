@@ -3,12 +3,11 @@ const toateIntrebarile = [
     intrebare: "Cine e cel mai probabil să se combine în ISWinT?",
     raspunsuri: [
       { text: "Denis", puncte: 11 },
-      { text: "Beto", puncte: 7 },
-      { text: "Miri", puncte: 6 },
+      { text: "Beto", puncte: 9 },
+      { text: "Miri", puncte: 7 },
       { text: "Enola", puncte: 5 },
       { text: "Bacter", puncte: 4 },
-      { text: "Orășan", puncte: 3 },
-      { text: "Norbi", puncte: 2 },
+      { text: "Orășan", puncte: 2 },
     ],
   },
   {
@@ -27,12 +26,11 @@ const toateIntrebarile = [
     intrebare: "Care e primul lucru care îți vine în minte când auzi ISWinT?",
     raspunsuri: [
       { text: "Alcool", puncte: 10 },
-      { text: "Distracție", puncte: 8 },
-      { text: "Poartă", puncte: 6 },
+      { text: "Distracție", puncte: 9 },
+      { text: "Poartă", puncte: 7 },
       { text: "Cămin", puncte: 5 },
       { text: "Olimpada", puncte: 4 },
       { text: "Straini", puncte: 3 },
-      { text: "Parada", puncte: 2 },
     ],
   },
   {
@@ -99,13 +97,12 @@ const toateIntrebarile = [
   {
     intrebare: "Cine va fi salahorlu de ghirlandă anul ăsta?",
     raspunsuri: [
-      { text: "Bilț", puncte: 10 },
-      { text: "Orășan", puncte: 7 },
-      { text: "Daria", puncte: 6 },
+      { text: "Bilț", puncte: 11 },
+      { text: "Orășan", puncte: 9 },
+      { text: "Daria", puncte: 8 },
       { text: "Andy", puncte: 5 },
-      { text: "Noris", puncte: 4 },
-      { text: "Cheșa", puncte: 3 },
-      { text: "Dragoș Marogel", puncte: 2 },
+      { text: "Noris", puncte: 3 },
+      { text: "Cheșa", puncte: 2 },
     ],
   },
   {
@@ -145,11 +142,11 @@ const toateIntrebarile = [
     intrebare: "Cum se spune la colac în engleză?",
     raspunsuri: [
       { text: "Colac", puncte: 12 },
-      { text: "Colack", puncte: 8 },
+      { text: "Colack", puncte: 9 },
       { text: "Swimming ring", puncte: 6 },
       { text: "Twisty bread", puncte: 5 },
       { text: "Floaty", puncte: 4 },
-      { text: "Lifebuoy", puncte: 3 },
+      { text: "Lifebuoy", puncte: 2 },
     ],
   },
   {
@@ -200,13 +197,13 @@ const toateIntrebarile = [
   {
     intrebare: "Cine întârzie mereu la ședințe?",
     raspunsuri: [
-      { text: "Beto", puncte: 10 },
+      { text: "Beto", puncte: 11 },
       { text: "Toată lumea", puncte: 8 },
-      { text: "Băieții", puncte: 6 },
+      { text: "Băieții", puncte: 7 },
       { text: "Nimeni", puncte: 5 },
       { text: "Enola", puncte: 4 },
-      { text: "Karla", puncte: 3 },
-      { text: "Tomici", puncte: 2 },
+      { text: "Karla", puncte: 2 },
+      { text: "Tomici", puncte: 1 },
     ],
   },
   {
@@ -279,25 +276,23 @@ const toateIntrebarile = [
   {
     intrebare: "Cine va fi trimis acasă anul ăsta?",
     raspunsuri: [
-      { text: "Norbi", puncte: 11 },
-      { text: "Participant", puncte: 7 },
-      { text: "Nicu Bălătici", puncte: 6 },
+      { text: "Norbi", puncte: 12 },
+      { text: "Participant", puncte: 8 },
+      { text: "Nicu Bălătici", puncte: 7 },
       { text: "Nimeni", puncte: 5 },
       { text: "Beto", puncte: 4 },
-      { text: "Noris", puncte: 3 },
-      { text: "Dan Balan", puncte: 2 },
+      { text: "Noris", puncte: 2 },
     ],
   },
   {
     intrebare: "Câți oameni intră într-un duș?",
     raspunsuri: [
-      { text: "30", puncte: 11 },
-      { text: "14", puncte: 7 },
+      { text: "30", puncte: 13 },
+      { text: "14", puncte: 9 },
       { text: "18", puncte: 6 },
       { text: "10", puncte: 5 },
-      { text: "2", puncte: 4 },
-      { text: "24", puncte: 3 },
-      { text: "5", puncte: 2 },
+      { text: "2", puncte: 3 },
+      { text: "24", puncte: 2 },
     ],
   },
   {
