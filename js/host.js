@@ -1,21 +1,37 @@
-const ws = new WebSocket(`wss://${location.host}`);
-
+let ws;
 const canalJoc = {
   postMessage: (data) => {
-    if (ws.readyState === WebSocket.OPEN) {
+    if (ws && ws.readyState === WebSocket.OPEN) {
       ws.send(JSON.stringify(data));
-    } else {
-      ws.addEventListener("open", () => ws.send(JSON.stringify(data)), { once: true });
     }
   },
   onmessage: null,
 };
 
-ws.addEventListener("message", (event) => {
-  if (canalJoc.onmessage) {
-    canalJoc.onmessage({ data: JSON.parse(event.data) });
-  }
-});
+function conecteaza() {
+  ws = new WebSocket(`wss://${location.host}`);
+
+  ws.addEventListener("open", () => {
+    console.log("WebSocket conectat");
+  });
+
+  ws.addEventListener("message", (event) => {
+    if (canalJoc.onmessage) {
+      canalJoc.onmessage({ data: JSON.parse(event.data) });
+    }
+  });
+
+  ws.addEventListener("close", () => {
+    console.log("WebSocket deconectat, reconectare în 2s...");
+    setTimeout(conecteaza, 2000);
+  });
+
+  ws.addEventListener("error", () => {
+    ws.close();
+  });
+}
+
+conecteaza();
 
 const INTREBARI_RUNDA_1 = 15;
 
@@ -298,11 +314,8 @@ function giveStrike() {
       );
     }
   } else {
-    // Echipa care fură a răspuns greșit — X mare, curăță strikes, acordă puncte
-    canalJoc.postMessage({ actiune: "big_x" });
-    setTimeout(() => {
-      canalJoc.postMessage({ actiune: "clear_strikes" });
-    }, 1500);
+    // Echipa care fură a răspuns greșit
+    canalJoc.postMessage({ actiune: "strike" });
     let originalName = stare.initial === 1 ? stare.t1 : stare.t2;
     awardBankTo(stare.initial);
     stare.steal = false;
@@ -310,7 +323,7 @@ function giveStrike() {
     changeTurn(stare.initial);
     salveazaStare();
     showStatus(
-      `❌ Furt Eșuat! ${originalName} primește punctele. Dezvăluie răspunsurile rămase manual.`,
+      `❌ Furt Eșuat! ${originalName} (echipa inițială) primește punctele.`,
     );
   }
 }

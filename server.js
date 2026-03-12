@@ -38,7 +38,10 @@ const clienti = new Set();
 
 wss.on("connection", (ws) => {
   clienti.add(ws);
+  ws.isAlive = true;
   console.log(`Client conectat. Total: ${clienti.size}`);
+
+  ws.on("pong", () => { ws.isAlive = true; });
 
   ws.on("message", (mesaj) => {
     for (const client of clienti) {
@@ -53,6 +56,19 @@ wss.on("connection", (ws) => {
     console.log(`Client deconectat. Total: ${clienti.size}`);
   });
 });
+
+// Ping la fiecare 30s ca să nu închidă Railway conexiunile idle
+setInterval(() => {
+  for (const ws of clienti) {
+    if (!ws.isAlive) {
+      clienti.delete(ws);
+      ws.terminate();
+    } else {
+      ws.isAlive = false;
+      ws.ping();
+    }
+  }
+}, 30000);
 
 server.listen(PORT, () => {
   console.log(`Server pornit pe portul ${PORT}`);

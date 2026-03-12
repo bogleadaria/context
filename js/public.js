@@ -1,21 +1,39 @@
-const ws = new WebSocket(`wss://${location.host}`);
-
+let ws;
 const canalJoc = {
   postMessage: (data) => {
-    if (ws.readyState === WebSocket.OPEN) {
+    if (ws && ws.readyState === WebSocket.OPEN) {
       ws.send(JSON.stringify(data));
-    } else {
-      ws.addEventListener("open", () => ws.send(JSON.stringify(data)), { once: true });
     }
   },
   onmessage: null,
 };
 
-ws.addEventListener("message", (event) => {
-  if (canalJoc.onmessage) {
-    canalJoc.onmessage({ data: JSON.parse(event.data) });
-  }
-});
+function conecteaza() {
+  ws = new WebSocket(`wss://${location.host}`);
+
+  ws.addEventListener("open", () => {
+    console.log("WebSocket conectat");
+    // Cere re-sincronizare de la host când se reconectează
+    canalJoc.postMessage({ actiune: "cere_sincronizare" });
+  });
+
+  ws.addEventListener("message", (event) => {
+    if (canalJoc.onmessage) {
+      canalJoc.onmessage({ data: JSON.parse(event.data) });
+    }
+  });
+
+  ws.addEventListener("close", () => {
+    console.log("WebSocket deconectat, reconectare în 2s...");
+    setTimeout(conecteaza, 2000);
+  });
+
+  ws.addEventListener("error", () => {
+    ws.close();
+  });
+}
+
+conecteaza();
 
 function ascundeTot() {
   document.getElementById("game-board").innerHTML = "";
@@ -71,15 +89,6 @@ canalJoc.onmessage = (event) => {
       document.getElementById("team2-display").classList.add("active-team");
   } else if (data.actiune === "clear_screen") {
     ascundeTot();
-  } else if (data.actiune === "big_x") {
-    const xDiv = document.createElement("div");
-    xDiv.id = "big-x-overlay";
-    xDiv.style.cssText = "position:fixed;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);z-index:999;animation:pop 0.3s ease-out;";
-    xDiv.innerHTML = '<span style="font-size:300px;color:#ff3333;font-weight:bold;text-shadow:10px 10px 20px #000;">X</span>';
-    document.body.appendChild(xDiv);
-    setTimeout(() => xDiv.remove(), 1500);
-  } else if (data.actiune === "clear_strikes") {
-    document.getElementById("strike-container").innerHTML = "";
   } else if (data.actiune === "splash_runda_noua") {
     ascundeTot();
     document.getElementById("big-alert").style.display = "none";
