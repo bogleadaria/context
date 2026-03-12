@@ -71,6 +71,15 @@ canalJoc.onmessage = (event) => {
       document.getElementById("team2-display").classList.add("active-team");
   } else if (data.actiune === "clear_screen") {
     ascundeTot();
+  } else if (data.actiune === "big_x") {
+    const xDiv = document.createElement("div");
+    xDiv.id = "big-x-overlay";
+    xDiv.style.cssText = "position:fixed;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);z-index:999;animation:pop 0.3s ease-out;";
+    xDiv.innerHTML = '<span style="font-size:300px;color:#ff3333;font-weight:bold;text-shadow:10px 10px 20px #000;">X</span>';
+    document.body.appendChild(xDiv);
+    setTimeout(() => xDiv.remove(), 1500);
+  } else if (data.actiune === "clear_strikes") {
+    document.getElementById("strike-container").innerHTML = "";
   } else if (data.actiune === "splash_runda_noua") {
     ascundeTot();
     document.getElementById("big-alert").style.display = "none";

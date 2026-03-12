@@ -298,8 +298,11 @@ function giveStrike() {
       );
     }
   } else {
-    // Echipa care fură a răspuns greșit
-    canalJoc.postMessage({ actiune: "strike" });
+    // Echipa care fură a răspuns greșit — X mare, curăță strikes, acordă puncte
+    canalJoc.postMessage({ actiune: "big_x" });
+    setTimeout(() => {
+      canalJoc.postMessage({ actiune: "clear_strikes" });
+    }, 1500);
     let originalName = stare.initial === 1 ? stare.t1 : stare.t2;
     awardBankTo(stare.initial);
     stare.steal = false;
@@ -307,7 +310,7 @@ function giveStrike() {
     changeTurn(stare.initial);
     salveazaStare();
     showStatus(
-      `❌ Furt Eșuat! ${originalName} (echipa inițială) primește punctele.`,
+      `❌ Furt Eșuat! ${originalName} primește punctele. Dezvăluie răspunsurile rămase manual.`,
     );
   }
 }
