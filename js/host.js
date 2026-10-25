@@ -46,11 +46,15 @@ function shuffle(arr) {
 
 function genereazaRunde() {
   const amestecate = shuffle(toateIntrebarile);
-  const runda1 = amestecate.slice(0, INTREBARI_RUNDA_1);
-  const runda2 = amestecate.slice(INTREBARI_RUNDA_1);
+  
+  const runda1 = amestecate.slice(0, 8);
+  const runda2 = amestecate.slice(8, 16);
+  const runda3 = amestecate.slice(16, 24);
+  
   return [
-    { nume: "RUNDA 1 (Primul Meci)", intrebari: runda1 },
-    { nume: "RUNDA 2 (Al Doilea Meci)", intrebari: runda2 },
+    { nume: "RUNDA 1", intrebari: runda1 },
+    { nume: "RUNDA 2", intrebari: runda2 },
+    { nume: "RUNDA 3", intrebari: runda3 },
   ];
 }
 

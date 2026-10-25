@@ -68,7 +68,7 @@ setInterval(() => {
       ws.ping();
     }
   }
-}, 30000);
+}, 10000);
 
 server.listen(PORT, () => {
   console.log(`Server pornit pe portul ${PORT}`);
